@@ -37,5 +37,5 @@ A new feed entry is loaded by a loadFeed function and changes the content.
 This is asynchronous so callbacks are used.
 
 
-#Acknowledgements
-Thanks to mohamend riaad for the study jam to help with this.
+# Acknowledgements
+Thanks to mohammed riaad for the study jam to help with this.
