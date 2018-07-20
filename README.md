@@ -15,11 +15,12 @@ Whether you work in an organization that uses test-driven development or in an o
 
 1.Clone this repository or download it as a .zip file.
 2.Open the index.html file in the browser, to open the RSS feedreader.
-3.Check the test results from jamine on the bottom part of the page.
+3.Check the test results from jasmine on the bottom part of the page.
 
 # What is in the test suite?
 
 There are 4 tests in the feedreader spec file:
+
 1.The allFeeds 
 There are no undefined objects for name and for URLS, thet may not be empty.
 Also the Urls are tested to contain html/https.
