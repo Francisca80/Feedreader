@@ -4,14 +4,22 @@
  * all of the tests that will be run against your application.
  */
 
+/* We're placing all of our tests within the $() function,
+ * since some of these tests may require DOM elements. We want
+ * to ensure they don't run until the DOM is ready.
+ */
 $(function () {
-
+  /* This is our first test suite - a test suite just contains
+     * a related set of tests. This suite is all about the RSS
+     * feeds definitions, the allFeeds variable in our application.
+     */
     describe('RSS Feeds', function () {
 
-        it('are defined', function () {
+        it('are defined', () => {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
+
 
 
         it('urls are notEmpty', () => {
@@ -24,7 +32,7 @@ $(function () {
 
         });
 
-        it('name is defined', function () {
+        it('name is defined', () => {
             allFeeds.forEach(feed => {
 
                 expect(feed.name).toBeDefined();
@@ -34,7 +42,7 @@ $(function () {
         });
     });
 
-    describe('The menu', function () {
+    describe('The menu', () => {
 
         const body = document.body;
         const menuIcon = document.querySelector('.menu-icon-link');
@@ -52,32 +60,26 @@ $(function () {
     });
 
     describe('Initial Entries', () => {
-
+       
         beforeEach((done) => {
             loadFeed(0, () => {
                 done();
             });
         });
 
+      
 
-        it("there is at least a single .entry in the .feed after loadFeed() is done", ((done) => {
-            const singleEntries = document.querySelector(".feed").getElementsByClassName("entry").length;
+        it('there is at least a single .entry in the feed', ((done) => {
+            const singleEntries = document.querySelector('.feed').getElementsByClassName('entry').length;
             expect(singleEntries).toBeGreaterThan(0);
             done();
         }));
 
-        it("entry has a link starting'http(s)://'", ((done) => {
-            const entries = document.querySelector(".feed").getElementsByClassName("entry-link");
-            for (let i = 0; i < entries.length; i++) {
-                expect(entries[i].href).toMatch(/^(http|https):\/\//);
-            }
-            done();
-        }));
     });
 
     describe('New Feed Selection', () => {
 
-        const actualFeedSelection;
+       let actualFeedSelection;
         beforeEach((done) => {
             loadFeed(0, () => {
                 actualFeedSelection = document.querySelector(".feed").innerHTML;
@@ -87,10 +89,15 @@ $(function () {
                 });
             });
         });
-        it("new content loaded through loadFeed()", ((done) => {
-            var newFeedSelection = document.querySelector(".feed").innerHTML;
+        it("new feeds are loaded through loadFeed()", ((done) => {
+            const newFeedSelection = document.querySelector(".feed").innerHTML;
             expect(actualFeedSelection).not.toBe(newFeedSelection);
             done();
         }));
     })
 }());
+
+
+
+
+ 
