@@ -53,9 +53,9 @@ $(function () {
 
         it('menuHidden toggleOnClick', function () {
             menuIcon.click();
-            expect(body.className).not.toBe('menu-hidden');
+            expect(body.classList.contains('menu-hidden')).toBe(false);
             menuIcon.click();
-            expect(body.className).toBe('menu-hidden');
+            expect(body.classList.contains('menu-hidden')).toBe(true);
         });
     });
 
